@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoRefacciones Xalapa | Clean & Fast</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PALETA DE COLORES ESTRICTA */
+        :root {
+            --blanco-puro: #ffffff;
+            --blanco-humo: #f4f4f5;
+            --negro-absoluto: #000000;
+            --gris-oscuro: #1a1a1a;
+            --naranja-racing: #FF5722;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--blanco-puro);
+            color: var(--negro-absoluto);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVEGACIÓN - Minimalista y Limpia */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: var(--negro-absoluto);
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--naranja-racing); }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            color: var(--gris-oscuro);
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--naranja-racing); }
+
+        /* HERO SECTION - Estilo Revista/Editorial */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 5% 0 5%;
+            background-color: var(--blanco-puro);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 35%;
+            height: 100%;
+            background-color: var(--blanco-humo);
+            border-left: 20px solid var(--naranja-racing);
+            z-index: 0;
+        }
+
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: var(--negro-absoluto);
+            color: var(--blanco-puro);
+            padding: 8px 16px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 6rem;
+            line-height: 0.9;
+            color: var(--negro-absoluto);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .hero-content h1 span { color: var(--naranja-racing); }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .btn-naranja {
+            background-color: var(--naranja-racing);
+            color: var(--blanco-puro);
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+        }
+        .btn-naranja:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 87, 34, 0.4);
+        }
+
+        .hero-image {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 650px;
+            object-fit: cover;
+            box-shadow: 20px 20px 0px var(--naranja-racing);
+            transition: 0.5s ease;
+        }
+        .hero-image img:hover { transform: translate(-10px, -10px); box-shadow: 30px 30px 0px var(--negro-absoluto); }
+
+        /* CINTA DE MARCA (Marquee) */
+        .marquee {
+            background: var(--negro-absoluto);
+            color: var(--blanco-puro);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+        .marquee-content {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            animation: scroll 20s linear infinite;
+        }
+        .marquee span { color: var(--naranja-racing); margin: 0 20px; }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* CATÁLOGO */
+        .catalogo-section { padding: 100px 5%; background-color: var(--blanco-puro); }
+        
+        .section-header { text-align: left; margin-bottom: 60px; }
+
+        .section-header h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            color: var(--negro-absoluto);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .section-header h2 span { color: var(--naranja-racing); }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .producto-card {
+            background-color: var(--blanco-puro);
+            border: 1px solid #eaeaea;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            text-align: center;
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .producto-card {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .producto-card:hover {
+            border-color: var(--naranja-racing);
+            box-shadow: 0 25px 50px rgba(255, 87, 34, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .producto-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: var(--blanco-humo);
+        }
+
+        .producto-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .producto-card:hover .producto-img { transform: scale(1.1); }
+        
+        /* ETIQUETAS MEJORADAS (NUEVO / MÁS VENDIDO) */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            z-index: 10;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            letter-spacing: 1px;
+        }
+        .badge-vendido { background: var(--naranja-racing); color: var(--blanco-puro); }
+        .badge-nuevo { background: var(--negro-absoluto); color: var(--blanco-puro); }
+
+        .producto-info h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--negro-absoluto);
+            margin: 10px 0;
+        }
+
+        /* BOTÓN WHATSAPP FLOTANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* SECCIÓN REPARTIDORES */
+        .repartidores-seccion {
+            background-color: var(--naranja-racing);
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .repartidores-text h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 4.5rem;
+            color: var(--blanco-puro);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .repartidores-text p {
+            font-size: 1.2rem;
+            color: var(--negro-absoluto);
+            font-weight: 800;
+            max-width: 500px;
+        }
+
+        .btn-negro {
+            background-color: var(--negro-absoluto);
+            color: var(--blanco-puro);
+            padding: 20px 50px;
+            border: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+        }
+        .btn-negro:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px rgba(0,0,0,0.5); }
+
+        /* FOOTER / REDES SOCIALES */
+        footer {
+            background-color: var(--negro-absoluto);
+            color: var(--blanco-puro);
+            text-align: center;
+            padding: 60px 5%;
+        }
+
+        footer h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        footer h2 span {
+            color: var(--naranja-racing);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--blanco-puro);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 2px solid var(--blanco-puro);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--naranja-racing);
+            border-color: var(--naranja-racing);
+            color: var(--blanco-puro);
+            transform: translateY(-5px);
+        }
+
+        /* ESTILOS DE LOS MODALES (VENTANAS EMERGENTES) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .modal-overlay.activo { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: var(--blanco-puro); padding: 40px; text-align: center;
+            max-width: 450px; width: 90%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            transform: translateY(-50px); transition: transform 0.3s ease;
+            border-radius: 15px;
+            position: relative;
+        }
+        .modal-overlay.activo .modal-content { transform: translateY(0); }
+
+        /* DISEÑO DE CUPÓN REALISTA */
+        .cupon-card {
+            background: var(--naranja-racing);
+            color: var(--blanco-puro);
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            position: relative;
+            border: 2px dashed rgba(255,255,255,0.6);
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+        }
+        /* Círculos recortados en los bordes para simular ticket */
+        .cupon-card::before, .cupon-card::after {
+            content: ''; position: absolute; top: 50%;
+            width: 30px; height: 30px; background: var(--blanco-puro);
+            border-radius: 50%; transform: translateY(-50%);
+        }
+        .cupon-card::before { left: -17px; box-shadow: inset -3px 0 5px rgba(0,0,0,0.05); }
+        .cupon-card::after { right: -17px; box-shadow: inset 3px 0 5px rgba(0,0,0,0.05); }
+        
+        .cupon-codigo {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.2rem;
+            letter-spacing: 4px;
+            margin: 0;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+            line-height: 1;
+        }
+        .cupon-desc {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========================================================
+           DISEÑO RESPONSIVO (ADAPTACIÓN PARA CELULARES Y TABLETS)
+           ======================================================== */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .logo { font-size: 1.8rem; }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 140px;
+            }
+            .hero::before { display: none; } 
+            .hero-content {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .hero-content h1 { font-size: 3.2rem; line-height: 1; }
+            .hero-content p { margin: 0 auto 30px auto; }
+            .hero-image { width: 100%; }
+
+            .section-header { text-align: center; margin-bottom: 40px; }
+            .section-header h2 { font-size: 2.8rem; }
+            .catalogo-section { padding: 60px 5%; }
+            
+            /* Mejora en la cuadrícula de productos para que no se aprieten */
+            .grid-productos { grid-template-columns: 1fr; gap: 30px; }
+
+            .repartidores-seccion {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 50px 5%;
+            }
+            .repartidores-text h2 { font-size: 3rem; }
+            .repartidores-text p { margin: 0 auto; }
+
+            .social-links { flex-direction: column; gap: 15px; }
+
+            .modal-content { padding: 30px 20px; }
+            .modal-content h2 { font-size: 2rem !important; }
+            
+            /* Ajuste del botón WhatsApp en móvil */
+            .whatsapp-float { 
+                bottom: 20px; right: 20px; 
+                width: 50px; height: 50px; 
+            }
+            .whatsapp-float svg { width: 28px; height: 28px; }
+            
+            /* Ajuste de cupón en móvil */
+            .cupon-codigo { font-size: 2.5rem; }
+            .cupon-card { padding: 25px 15px; margin: 20px 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Moto<span>Refacciones Xalapa</span></div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#repartidores">Beneficios</a>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="tagline">Catálogo</div>
+            <h1>Acelera<br><span>Tu Ritmo.</span></h1>
+            <p>El catálogo más especializado en refacciones para motocicletas. Calidad certificada para rodar seguro por la ciudad.</p>
+            <a href="#catalogo" class="btn-naranja">Explorar Catálogo</a>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=800&auto=format&fit=crop" alt="Piezas de Moto">
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            SOLO MOTOS <span>/</span> KITS DE ARRASTRE <span>/</span> BALATAS <span>/</span> ACEITES SINTÉTICOS <span>/</span> LLANTAS DE ALTO AGARRE <span>/</span> SOLO MOTOS <span>/</span> KITS DE ARRASTRE <span>/</span> BALATAS <span>/</span> ACEITES SINTÉTICOS <span>/</span> LLANTAS DE ALTO AGARRE
+        </div>
+    </div>
+
+    <section id="catalogo" class="catalogo-section">
+        <div class="section-header">
+            <h2>Catálogo <span>Abierto</span></h2>
+        </div>
+
+        <div class="grid-productos" id="contenedor-productos">
+            </div>
+    </section>
+
+    <!-- BOTÓN DE WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/522281234567" class="whatsapp-float" target="_blank" rel="noopener" title="Contáctanos por WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 .017 5.39.017 12.03c0 2.128.556 4.205 1.613 6.036L.01 24l6.103-1.602a11.966 11.966 0 005.918 1.57h.005c6.645 0 12.01-5.39 12.01-12.032S18.677 0 12.03 0zM12.03 21.996c-1.802 0-3.57-.484-5.12-1.4l-.367-.217-3.804.996.997-3.71-.237-.377a9.98 9.98 0 01-1.534-5.263c0-5.513 4.49-10.003 10.033-10.003 2.67 0 5.178 1.042 7.067 2.93 1.888 1.89 2.926 4.398 2.926 7.07 0 5.51-4.49 10.003-10.004 10.003zM17.53 14.542c-.302-.15-1.785-.88-2.062-.98-.277-.102-.48-.152-.68.15-.203.303-.78 1.01-.956 1.214-.176.205-.353.23-.655.08-.302-.152-1.272-.468-2.42-1.332-.894-.672-1.498-1.503-1.674-1.805-.176-.303-.018-.466.133-.618.136-.135.302-.352.453-.528.152-.175.203-.302.302-.505.102-.204.05-.38-.025-.53-.076-.153-.68-1.643-.933-2.25-.246-.593-.497-.68-.522-.176-.01-.378-.01-.58-.01s-.53.076-.807.38C7.157 7.742 6.2 8.653 6.2 10.51c0 1.856 1.157 3.65 1.32 3.864.164.215 2.634 4.045 6.38 5.632.894.378 1.593.604 2.138.772.896.284 1.71.244 2.355.148.72-.11 2.213-.905 2.527-1.78.314-.875.314-1.624.22-1.78-.09-.153-.34-.242-.64-.393z"/>
+        </svg>
+    </a>
+
+    <section id="repartidores" class="repartidores-seccion">
+        <div class="repartidores-text">
+            <h2>FLOTILLAS<br>& APPS</h2>
+            <p>Uber, Didi y Rappi. Precios de mayoreo al presentar tu aplicación activa en nuestro mostrador.</p>
+        </div>
+        <button class="btn-negro" onclick="activarPromo()">Ver Descuento</button>
+    </section>
+
+    <footer>
+        <h2>Visítanos y <span>Síguenos</span></h2>
+        <div class="social-links">
+            <a href="https://www.instagram.com/motorefacciones.xalapa?igsh=a3lxcnNmc3Y0dWZw" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/share/1EQdwMVmN6/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://maps.app.goo.gl/3L85vbegi21D3hk26?g_st=aw" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+    </footer>
+
+    <div id="modal-descuento" class="modal-overlay">
+        <div class="modal-content">
+            <h2 style="color: var(--negro-absoluto); font-family: 'Anton', sans-serif; font-size: 2.6rem; margin-bottom: 5px; line-height: 1;">CÓDIGO DESBLOQUEADO</h2>
+            <p style="font-size: 1rem; font-weight: 600; color: #555;">Beneficio exclusivo para escuadrón de reparto.</p>
+            
+            <div class="cupon-card">
+                <p class="cupon-codigo">RUTA15</p>
+                <p class="cupon-desc">15% OFF en Llantas y Afinaciones</p>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 25px; font-weight: 600;">Presenta esta pantalla en mostrador junto con tu aplicación activa (Uber, Didi, Rappi) para aplicar el descuento.</p>
+            <button class="btn-negro" onclick="cerrarModalDescuento()">ENTENDIDO</button>
+        </div>
+    </div>
+
+
+    <script>
+        const productos = [
+            { id: 1, nombre: "Llanta Michelin Pilot Street", img: "https://tse4.mm.bing.net/th/id/OIP.pROvKlxUERS1kezzt4qQ1gHaI-?rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { id: 2, nombre: "Kit de Arrastre Acero Carbono", img: "https://llantasyllantas.com/wp-content/uploads/2025/04/Kit-Arrastre-Narita-H-Cbf-150-H-20513.webp" },
+            { id: 3, nombre: "Carburador Mikuni 30mm Alto Flujo", img: "https://shop.mikuni.com/wp-content/uploads/2024/10/BS.jpg" },
+            { id: 4, nombre: "Faro LED Proyección Integral", img: "https://m.media-amazon.com/images/I/71M93UWOsUL._AC_.jpg" },
+            { id: 5, nombre: "Balatas de Cerámica Racing", img: "https://http2.mlstatic.com/D_NQ_NP_682075-MLM74178032453_012024-O.webp" },
+            { id: 6, nombre: "Escape Deportivo Fibra/Carbono", img: "https://tse2.mm.bing.net/th/id/OIP.DZwPb_VIC5TPVOjk9ENR1wHaFA?rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { id: 7, nombre: "Espejos Tipo Rizoma Aluminio", img: "https://http2.mlstatic.com/D_NQ_NP_839887-MCO75103654721_032024-O.webp" },
+            { id: 8, nombre: "Aceite Motul 7100 Sintético", img: "https://media.falabella.com/falabellaCL/140027625_01/w=800,h=800,fit=pad" },
+            { id: 9, nombre: "Casco Certificado DOT Integral", img: "https://http2.mlstatic.com/casco-integral-certificado-dot-ich-520-negro-mate-con-gris-D_NQ_NP_960402-MCO27297220907_052018-F.jpg" },
+            { id: 10, nombre: "Guantes Racing con Protección", img: "https://tse3.mm.bing.net/th/id/OIP.DN-IorEJ8hycQ0EyziCzZgHaHa?r=0&cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { id: 11, nombre: "Filtro de Aire Alto Flujo K&N", img: "https://tcmotosracing.com/wp-content/uploads/2023/05/PhotoRoom_014_20230527_095315.jpg" },
+            { id: 12, nombre: "Batería de Gel YTX7L-BS", img: "https://cdn.kemik.gt/2024/04/YTX7LBS_GEL-GT1-1200X1200-1.-700x700.jpg" }
+        ];
+
+        function cargarProductos() {
+            const contenedor = document.getElementById('contenedor-productos');
+            let html = '';
+            
+            productos.forEach((item, index) => {
+                // Lógica de marketing visual: Agrega "etiquetas" llamativas a algunos productos clave
+                let badge = "";
+                if(index === 0 || index === 7) {
+                    badge = `<div class="badge badge-vendido">MÁS VENDIDO</div>`;
+                } else if(index === 6 || index === 8) {
+                    badge = `<div class="badge badge-nuevo">NUEVO</div>`;
+                }
+
+                html += `
+                    <div class="producto-card" style="animation-delay: ${index * 0.1}s">
+                        ${badge}
+                        <div class="producto-img-wrapper">
+                            <img src="${item.img}" alt="${item.nombre}" class="producto-img" onerror="this.src='https://via.placeholder.com/600x400?text=Imagen+No+Disponible'">
+                        </div>
+                        <div class="producto-info">
+                            <h3>${item.nombre}</h3>
+                        </div>
+                    </div>
+                `;
+            });
+            contenedor.innerHTML = html;
+        }
+
+        // Función del Modal 2 (Descuento físico)
+        function activarPromo() {
+            document.getElementById('modal-descuento').classList.add('activo');
+        }
+
+        function cerrarModalDescuento() {
+            document.getElementById('modal-descuento').classList.remove('activo');
+        }
+
+        // Iniciar página
+        window.onload = cargarProductos;
+    </script>
+</body>
+</html>
