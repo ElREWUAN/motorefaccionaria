@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -262,6 +262,55 @@
             margin: 10px 0;
         }
 
+        /* SECCIÓN NOSOTROS (MISIÓN Y VISIÓN) */
+        .nosotros-seccion {
+            background-color: var(--blanco-humo);
+            padding: 100px 5%;
+        }
+        .nosotros-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .nosotros-card {
+            background-color: var(--blanco-puro);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .nosotros-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--naranja-racing);
+        }
+        .nosotros-card:hover { 
+            transform: translateY(-15px); 
+            box-shadow: 0 30px 60px rgba(255, 87, 34, 0.1);
+            border-color: var(--naranja-racing);
+        }
+        .nosotros-icon { 
+            width: 90px; height: 90px; margin: 0 auto 30px auto;
+            background: rgba(255, 87, 34, 0.1); color: var(--naranja-racing);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2.8rem; box-shadow: 0 0 20px rgba(255, 87, 34, 0.1);
+        }
+        .nosotros-card h3 {
+            font-family: 'Anton', sans-serif; font-size: 2.5rem;
+            color: var(--negro-absoluto); margin-bottom: 20px;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .nosotros-card h3 span { color: var(--naranja-racing); }
+        .nosotros-card p {
+            font-size: 1.05rem; color: #555; line-height: 1.7; font-weight: 600;
+            text-align: justify;
+        }
+
         /* BOTÓN WHATSAPP FLOTANTE */
         .whatsapp-float {
             position: fixed;
@@ -460,6 +509,9 @@
             /* Mejora en la cuadrícula de productos para que no se aprieten */
             .grid-productos { grid-template-columns: 1fr; gap: 30px; }
 
+            /* Ajuste de Misión y Visión a una columna en móviles */
+            .nosotros-container { grid-template-columns: 1fr; }
+
             .repartidores-seccion {
                 flex-direction: column;
                 text-align: center;
@@ -494,6 +546,7 @@
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#catalogo">Catálogo</a>
+            <a href="#nosotros">Nosotros</a>
             <a href="#repartidores">Beneficios</a>
         </div>
     </nav>
@@ -526,8 +579,27 @@
             </div>
     </section>
 
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="nosotros-seccion">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 3.5rem;">Acerca de <span>Nosotros</span></h2>
+        </div>
+        <div class="nosotros-container">
+            <div class="nosotros-card">
+                <div class="nosotros-icon">🎯</div>
+                <h3>Nuestra <span>Misión</span></h3>
+                <p>Ofrecer refacciones y accesorios para motocicletas de buena calidad a precios accesibles, brindando un excelente servicio al cliente, asesoría técnica y soluciones rápidas para el mantenimiento, contribuyendo a la movilidad y trabajo de los clientes.</p>
+            </div>
+            <div class="nosotros-card">
+                <div class="nosotros-icon">🚀</div>
+                <h3>Nuestra <span>Visión</span></h3>
+                <p>Posicionarse como la refaccionaria líder en el mercado local de Xalapa a través de la innovación en ventas digitales y la expansión de servicios técnicos.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- BOTÓN DE WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/522281234567" class="whatsapp-float" target="_blank" rel="noopener" title="Contáctanos por WhatsApp">
+    <a href="https://wa.me/522287766238" class="whatsapp-float" target="_blank" rel="noopener" title="Contáctanos por WhatsApp">
         <svg viewBox="0 0 24 24">
             <path d="M12.031 0C5.385 0 .017 5.39.017 12.03c0 2.128.556 4.205 1.613 6.036L.01 24l6.103-1.602a11.966 11.966 0 005.918 1.57h.005c6.645 0 12.01-5.39 12.01-12.032S18.677 0 12.03 0zM12.03 21.996c-1.802 0-3.57-.484-5.12-1.4l-.367-.217-3.804.996.997-3.71-.237-.377a9.98 9.98 0 01-1.534-5.263c0-5.513 4.49-10.003 10.033-10.003 2.67 0 5.178 1.042 7.067 2.93 1.888 1.89 2.926 4.398 2.926 7.07 0 5.51-4.49 10.003-10.004 10.003zM17.53 14.542c-.302-.15-1.785-.88-2.062-.98-.277-.102-.48-.152-.68.15-.203.303-.78 1.01-.956 1.214-.176.205-.353.23-.655.08-.302-.152-1.272-.468-2.42-1.332-.894-.672-1.498-1.503-1.674-1.805-.176-.303-.018-.466.133-.618.136-.135.302-.352.453-.528.152-.175.203-.302.302-.505.102-.204.05-.38-.025-.53-.076-.153-.68-1.643-.933-2.25-.246-.593-.497-.68-.522-.176-.01-.378-.01-.58-.01s-.53.076-.807.38C7.157 7.742 6.2 8.653 6.2 10.51c0 1.856 1.157 3.65 1.32 3.864.164.215 2.634 4.045 6.38 5.632.894.378 1.593.604 2.138.772.896.284 1.71.244 2.355.148.72-.11 2.213-.905 2.527-1.78.314-.875.314-1.624.22-1.78-.09-.153-.34-.242-.64-.393z"/>
         </svg>
